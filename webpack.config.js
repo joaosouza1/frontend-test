@@ -4,6 +4,7 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 module.exports = {
   entry: "./src/index.js",
   mode: "development",
+  devtool: "eval-source-map",
   module: {
     rules: [
       {

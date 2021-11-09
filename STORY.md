@@ -37,3 +37,15 @@ Finally, I have Webpack working with JSX and fast refresh. This is my first git 
 I use TypeScript daily at work, but I need to enable it using Webpack. This how-to was quite handy:
 
 https://webpack.js.org/guides/typescript/
+
+Setting up TS was straightforward but I noticed something strange. If I throw an error on purpose, the Call Stack blames the wrong line of code:
+
+```
+Call Stack
+ Counter
+  superformula-frontend-test/./src/Counter.tsx:16:11
+  // It shows "line 16" because it's looking at the bundled output.
+  // In the source code, the "throw" command is actually on line 7.
+```
+
+To fix that, I activated Source Maps in tsconfig and Webpack. The line number on the overlay error page is still wrong, but in the browser console it's correct. It's enough for now. Fixing the overlay page can be a future enhancement, I'll skip it for now to save time.
