@@ -13,12 +13,17 @@ module.exports = {
         // find options in .babelrc
       },
       {
+        test: /\.(ts|tsx)?$/,
+        exclude: /node_modules/,
+        loader: "ts-loader",
+      },
+      {
         test: /\.css$/,
         use: ["style-loader", "css-loader"]
       }
     ]
   },
-  resolve: { extensions: ["*", ".js", ".jsx"] },
+  resolve: { extensions: ["*", ".js", ".jsx", ".ts", ".tsx"] },
   output: {
     path: path.resolve(__dirname, "dist/"),
     publicPath: "/dist/",

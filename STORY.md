@@ -31,3 +31,9 @@ I’m glad I set up that demo project first, to get used with Webpack error mess
 https://github.com/pmmmwh/react-refresh-webpack-plugin/issues/518#issuecomment-964084108
 
 Finally, I have Webpack working with JSX and fast refresh. This is my first git commit.
+
+## TypeScript
+
+I use TypeScript daily at work, but I need to enable it using Webpack. This how-to was quite handy:
+
+https://webpack.js.org/guides/typescript/
