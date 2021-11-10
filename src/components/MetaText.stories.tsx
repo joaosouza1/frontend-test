@@ -10,12 +10,7 @@ export default {
 
 const Template: ComponentStory<typeof MetaText> = (args) => <MetaText {...args} />;
 
-export const Cuisine = Template.bind({});
-Cuisine.args = {
-  children: 'Seafood',
-};
-
-export const Price = Template.bind({});
-Price.args = {
-  children: '$$$$',
+export const Default = Template.bind({});
+Default.args = {
+  children: 'Meta text',
 };
