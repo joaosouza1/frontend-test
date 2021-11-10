@@ -49,3 +49,17 @@ Call Stack
 ```
 
 To fix that, I activated Source Maps in tsconfig and Webpack. The line number on the overlay error page is still wrong, but in the browser console it's correct. It's enough for now. Fixing the overlay page can be a future enhancement, I'll skip it for now to save time.
+
+# Testing
+
+Before doing any coding, I wanted to setup the testing tools.
+
+### Jest
+
+Jest is the go-to test runner for React apps so that's what I'll be using. It provides "describe" and "it" blocks and you run it on the CLI. It didn't work on the first attempt, however. After installing Jest, when I ran `yarn run jest`, I got this error:
+
+```
+React Refresh Babel transform should only be enabled in development environment. Instead, the environment is: "test"
+```
+
+Indeed, it doesn't make sense to have hot reloading in tests, it's not necessary. It took me more than one hour to make sense of this error and I'm glad I learned something new. In the end, all I had to do was to change `.babelrc` to include the `react-refresh/babel` plugin only for the development environment. Additionally, to make Jest work with TypeScript, I included the `@babel/preset-typescript` plugin for the test environment alone.
