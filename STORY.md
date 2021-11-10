@@ -63,3 +63,7 @@ React Refresh Babel transform should only be enabled in development environment.
 ```
 
 Indeed, it doesn't make sense to have hot reloading in tests, it's not necessary. It took me more than one hour to make sense of this error and I'm glad I learned something new. In the end, all I had to do was to change `.babelrc` to include the `react-refresh/babel` plugin only for the development environment. Additionally, to make Jest work with TypeScript, I included the `@babel/preset-typescript` plugin for the test environment alone.
+
+### React Testing Library
+
+The name says it all: React Testing Library is tailored for React and it includes handy utilities for rendering components to a virtual DOM and testing the generated HTML.
