@@ -3,6 +3,9 @@
     "@babel/env",
     "@babel/preset-react"
   ],
+  "plugins": [
+    "babel-plugin-styled-components"
+  ],
   "env": {
     "development": {
       "plugins": [

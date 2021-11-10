@@ -71,3 +71,32 @@ The name says it all: React Testing Library is tailored for React and it include
 ## React, at last
 
 With the setup out of the way, it's time to clear the placeholder files I created and start coding.
+
+### Presentational components
+
+When implementing a React app, I like to start with presentational components. I take a bottom-up approach: I implement "child" components first, then move up to "parent" components. This way, each component is a small task to complete, and each one I finish is a functioning tested piece of the app. If I took the other way, starting with the top-level components, I'd always find myself "stuck" having yet to implement a number of child components under it, and that would be an exhausting task.
+
+So I'll start with the Restaurant Card, specifically its child components, following the [Figma file's](https://www.figma.com/file/4MqQhKPsnKetTud9tm6kDY/Superformula-FE-test-264388d?node-id=0%3A304) naming:
+
+- Image
+- Headline
+- Rating
+- Meta
+- Open Flag
+- Primary CTA
+
+#### TDD
+
+I'm doing TDD, but I admit I'm not yet familiar with the tools (Jest and React Testing Library), since at my current job they use a different setup. So I'll keep a few links here for my own reference:
+
+- React Testing Library queries: https://testing-library.com/docs/react-testing-library/cheatsheet
+- jest-dom matchers: https://github.com/testing-library/jest-dom
+- How to use React Testing Library Tutorial: https://www.robinwieruch.de/react-testing-library
+
+#### Styled Components
+
+I'm using the Styled Components library for CSS. Requirements for CSS are open-ended, so I just picked the first choice from the README's CSS tech stack. In the real world, we would have to consider more questions:
+
+- Does the product have an existing CSS file? So let's just use it.
+- Do I need to create a CSS file to be used in other apps? So SCSS or LESS would be a good choice, it's more manageable than plain CSS and can be compiled into one regular CSS file.
+- Is this a "black box" component to be used inside other apps? So I should use either inline styles or cryptic class names to avoid conflicts. Styled Components or Emotion would be good for this case.
