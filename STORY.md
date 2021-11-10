@@ -104,3 +104,7 @@ I'm using the Styled Components library for CSS. Requirements for CSS are open-e
 #### Storybook and Component Driven Development (CDD)
 
 I soon felt the need to install Storybook in this repo. Even though Jest and React Testing Library can test the accessibility and behavior of React components, Storybook is more helpful for testing the visual appearence of components (CDD). You can view the Storybook by running `yarn storybook`.
+
+#### Accessibility
+
+I'm adding accessible labels to strictly visual components, like the price indicator (dollar sign) and the Open Flag (green/red dot).

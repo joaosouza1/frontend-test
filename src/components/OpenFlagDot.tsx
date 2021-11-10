@@ -1,16 +1,24 @@
+import React, { FC } from 'react'
 import styled, { css } from 'styled-components'
 
 interface OpenFlagDotProps {
-  open: boolean
+  open?: boolean
 }
 
-export const OpenFlagDot = styled.div<OpenFlagDotProps>`
+const StyledOpenFlagDot = styled.div<OpenFlagDotProps>`
   width: 8px;
   height: 8px;
   background: #FF3548;
   border-radius: 50%;
 
-  ${({ open = true }) => open && css`
+  ${props => props.open && css`
     background: #00E8A4;
   `}
 `
+
+export const OpenFlagDot: FC<OpenFlagDotProps> = ({ open }) => {
+  const ariaLabel = open ? "Green dot" : "Red dot"
+  return (
+    <StyledOpenFlagDot open={open} aria-label={ariaLabel} />
+  )
+}
