@@ -50,7 +50,7 @@ Call Stack
 
 To fix that, I activated Source Maps in tsconfig and Webpack. The line number on the overlay error page is still wrong, but in the browser console it's correct. It's enough for now. Fixing the overlay page can be a future enhancement, I'll skip it for now to save time.
 
-# Testing
+## Testing
 
 Before doing any coding, I wanted to setup the testing tools.
 
@@ -66,4 +66,8 @@ Indeed, it doesn't make sense to have hot reloading in tests, it's not necessary
 
 ### React Testing Library
 
-The name says it all: React Testing Library is tailored for React and it includes handy utilities for rendering components to a virtual DOM and testing the generated HTML.
+The name says it all: React Testing Library is tailored for React and it includes handy utilities for rendering components to a virtual DOM and testing the generated HTML. I installed it and added a sample test just to make sure it works.
+
+## React, at last
+
+With the setup out of the way, it's time to clear the placeholder files I created and start coding.

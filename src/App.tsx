@@ -1,12 +1,9 @@
 import React from "react"
-import Counter from './Counter'
-import "./index.css"
 
 const App = () => {
   return(
-    <div className="App">
+    <div>
       <h1>Hello, World!</h1>
-      <Counter />
     </div>
   )
 }
