@@ -5,15 +5,15 @@
 import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 import React from 'react'
-import { Meta } from './DesktopRestaurantCard'
+import { MetaText } from './MetaText'
 
-describe("Meta", () => {
+describe(MetaText.name, () => {
   it("renders empty", () => {
-    render(<Meta data-testid="empty-meta" />)
+    render(<MetaText data-testid="empty-meta" />)
     expect(screen.getByTestId("empty-meta")).toBeEmptyDOMElement()
   })
   it("renders text", () => {
-    render(<Meta>This is meta text</Meta>)
+    render(<MetaText>This is meta text</MetaText>)
     expect(screen.getByText("This is meta text")).toBeInTheDocument()
   })
 })

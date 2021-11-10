@@ -100,3 +100,7 @@ I'm using the Styled Components library for CSS. Requirements for CSS are open-e
 - Does the product have an existing CSS file? So let's just use it.
 - Do I need to create a CSS file to be used in other apps? So SCSS or LESS would be a good choice, it's more manageable than plain CSS and can be compiled into one regular CSS file.
 - Is this a "black box" component to be used inside other apps? So I should use either inline styles or cryptic class names to avoid conflicts. Styled Components or Emotion would be good for this case.
+
+#### Storybook and Component Driven Development (CDD)
+
+I soon felt the need to install Storybook in this repo. Even though Jest and React Testing Library can test the accessibility and behavior of React components, Storybook is more helpful for testing the visual appearence of components (CDD). You can view the Storybook by running `yarn storybook`.

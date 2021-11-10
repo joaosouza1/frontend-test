@@ -11,6 +11,10 @@
     "@babel/preset-react": "^7.16.0",
     "@babel/preset-typescript": "^7.16.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.1",
+    "@storybook/addon-actions": "^6.3.12",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-links": "^6.3.12",
+    "@storybook/react": "^6.3.12",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^12.1.2",
     "@types/react": "^17.0.34",
@@ -33,6 +37,9 @@
   },
   "scripts": {
     "start": "webpack-dev-server",
-    "test": "jest"
-  }
+    "test": "jest",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {}
 }

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Meta = styled.span`
+export const MetaText = styled.span`
   font-family: HelveticaNeue;
   font-size: 12px;
   line-height: 16px;
