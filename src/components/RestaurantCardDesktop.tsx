@@ -18,7 +18,7 @@ interface RestaurantCardProps {
 
 export const RestaurantCardDesktop: FC<RestaurantCardProps> = (props) => {
   return (
-    <div>
+    <Wrapper>
       <Image src={props.imageURL} alt="Thumbnail picture" />
       <Heading>{props.name}</Heading>
       <Rating value={props.rating} />
@@ -31,9 +31,14 @@ export const RestaurantCardDesktop: FC<RestaurantCardProps> = (props) => {
         <OpenFlagDesktop open={props.open} />
       </MetaWrapper>
       <CardCTA primary>Learn more</CardCTA>
-    </div>
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
 const Image = styled.img`
   display: block;
@@ -59,6 +64,7 @@ const MetaWrapper = styled.div`
   margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
+  flex: 1;
 `
 
 const CardCTA = styled(CTA)`

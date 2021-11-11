@@ -13,7 +13,7 @@ export default {
           name: 'Common Card Size',
           styles: {
             width: '320px',
-            height: '424px',
+            height: '450px',
           },
         },
       },
@@ -24,8 +24,8 @@ export default {
 
 const Template: ComponentStory<typeof RestaurantCardDesktop> = (args) => <RestaurantCardDesktop {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+export const LongName = Template.bind({});
+LongName.args = {
   id: "123",
   name: "Very Long Name Restaurants Number 1 In List",
   imageURL: "https://s3-media2.fl.yelpcdn.com/bphoto/CPc91bGzKBe95aM5edjhhQ/o.jpg",
@@ -33,7 +33,15 @@ Default.args = {
   cuisine: "Thai",
   price: "$$$$",
   open: true,
-  style: {
-    width: 300
-  }
+};
+
+export const ShortName = Template.bind({});
+ShortName.args = {
+  id: "456",
+  name: "Restaurant",
+  imageURL: "https://s3-media2.fl.yelpcdn.com/bphoto/CPc91bGzKBe95aM5edjhhQ/o.jpg",
+  rating: 1.5,
+  cuisine: "American (new)",
+  price: "$",
+  open: false,
 };
