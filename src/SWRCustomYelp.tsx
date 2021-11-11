@@ -34,11 +34,27 @@ const yelpFetcher = (input: RequestInfo, init?: RequestInit) => (
   }).then(res => res.json())
 )
 
+// Persist the SWR cache to local storage.
+// https://swr.vercel.app/docs/advanced/cache#localstorage-based-persistent-cache
+function localStorageProvider() {
+  // When initializing, we restore the data from `localStorage` into a map.
+  const map = new Map(JSON.parse(localStorage.getItem('app-cache') || '[]'))
+
+  // Before unloading the app, we write back all the data into `localStorage`.
+  window.addEventListener('beforeunload', () => {
+    const appCache = JSON.stringify(Array.from(map.entries()))
+    localStorage.setItem('app-cache', appCache)
+  })
+
+  // We still use the map for write & read for performance.
+  return map
+}
+
 // SWRConfig that uses yelpFetcher by default.
 // https://swr.vercel.app/docs/global-configuration
 export const SWRConfigYelp: FC = (props) => {
   return (
-    <SWRConfig value={{ fetcher: yelpFetcher }}>
+    <SWRConfig value={{ fetcher: yelpFetcher, provider: localStorageProvider }}>
       {props.children}
     </SWRConfig>
   )
