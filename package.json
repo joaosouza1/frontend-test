@@ -15,6 +15,7 @@
     "@storybook/addon-essentials": "^6.3.12",
     "@storybook/addon-links": "^6.3.12",
     "@storybook/react": "^6.3.12",
+    "@svgr/webpack": "^5.5.0",
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^12.1.2",
     "@types/react": "^17.0.34",
@@ -41,5 +42,9 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
-  "dependencies": {}
+  "jest": {
+    "moduleNameMapper": {
+      "\\.svg": "<rootDir>/__mocks__/svgrMock.js"
+    }
+  }
 }

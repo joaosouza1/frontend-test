@@ -8,20 +8,27 @@ module.exports = {
   module: {
     rules: [
       {
+        // Enable JSX (find options in .babelrc)
         test: /\.(js|jsx)$/,
         exclude: /(node_modules)/,
         loader: "babel-loader",
-        // find options in .babelrc
       },
       {
+        // Enable TypeScript
         test: /\.(ts|tsx)?$/,
         exclude: /node_modules/,
         loader: "ts-loader",
       },
       {
+        // Enable importing CSS from React components
         test: /\.css$/,
         use: ["style-loader", "css-loader"]
-      }
+      },
+      {
+        // Enable importing SVG as a React component
+        test: /\.svg$/,
+        loader: "@svgr/webpack"
+      },
     ]
   },
   resolve: { extensions: ["*", ".js", ".jsx", ".ts", ".tsx"] },
@@ -37,4 +44,3 @@ module.exports = {
     new ReactRefreshWebpackPlugin()
   ]
 };
-

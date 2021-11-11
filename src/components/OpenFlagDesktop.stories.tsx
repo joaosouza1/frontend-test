@@ -8,7 +8,7 @@ export default {
   component: OpenFlagDesktop,
   parameters: {
     grid: {
-      cellSize: 2
+      cellSize: 1
     }
   }
 } as ComponentMeta<typeof OpenFlagDesktop>;

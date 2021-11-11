@@ -108,3 +108,11 @@ I soon felt the need to install Storybook in this repo. Even though Jest and Rea
 #### Accessibility
 
 I'm adding accessible labels to strictly visual components, like the price indicator (dollar sign) and the Open Flag (green/red dot).
+
+#### Star rating
+
+I wanted to find a good library for the star rating component. Ideally, that lib should be accessible and accept custom icons for filled, half and empty stars. I tried the most popular libraries I found on NPM trends, but unfortunately none of them worked nicely with the SVG star icons provided in the Figma file. The libs fill in the shape with a color, instead of swapping individual icons.
+
+https://www.npmtrends.com/react-rater-vs-react-rating-vs-react-rating-stars-component-vs-react-ratings-declarative-vs-react-star-rating-component-vs-react-star-ratings-vs-react-stars-vs-rc-rate
+
+So I implemented my own basic, read-only Rating component. I used the `@svgr/webpack` loader to allow SVG files to be imported as React components. I updated the settings to make it work in Webpack Dev Server and in Storybook, but unfortunately it still doesn't work in Jest. Because of that, I'll leave the Rating component untested until I find a solution.
