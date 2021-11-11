@@ -116,3 +116,28 @@ I wanted to find a good library for the star rating component. Ideally, that lib
 https://www.npmtrends.com/react-rater-vs-react-rating-vs-react-rating-stars-component-vs-react-ratings-declarative-vs-react-star-rating-component-vs-react-star-ratings-vs-react-stars-vs-rc-rate
 
 So I implemented my own basic, read-only Rating component. I used the `@svgr/webpack` loader to allow SVG files to be imported as React components. I updated the settings to make it work in Webpack Dev Server and in Storybook, but unfortunately it still doesn't work in Jest. Because of that, I'll leave the Rating component untested until I find a solution.
+
+#### Other components
+
+For the remaining components, I'm not adding Storybook files and tests anymore. I'm sad to not deliver a perfect codebase but this is a decision to speed up development, since my time for this test is limited.
+
+## Yelp API
+
+To fetch Yelp data, I created an account on Yelp and got an API key. The key and base URL are in the `.env` file:
+
+```
+YELP_API_URL=http://localhost:8010/proxy
+YELP_API_KEY=YOUR_KEY_HERE
+```
+
+In production, YELP_API_URL would be the remote proxy that runs on the app server. Yelp's API does not allow CORS. To get around this, I run a local proxy with CORS support and proxy requets to Yelp's endpoints:
+
+```
+yarn yelp-proxy
+```
+
+### SWR
+
+I'll fetch Yelp API data with SWR: https://swr.vercel.app
+
+It's a very handy data fetching hook with a local cache that works with REST and GraphQL. It removes the need for Redux in most cases (or any other local store).

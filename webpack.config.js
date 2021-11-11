@@ -1,5 +1,6 @@
 const path = require("path");
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const Dotenv = require("dotenv-webpack")
 
 module.exports = {
   entry: "./src/index.tsx",
@@ -41,6 +42,7 @@ module.exports = {
     port: 3000
   },
   plugins: [
-    new ReactRefreshWebpackPlugin()
+    new ReactRefreshWebpackPlugin(),
+    new Dotenv(),
   ]
 };

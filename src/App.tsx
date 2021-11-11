@@ -1,10 +1,12 @@
 import React from "react"
+import { RestaurantIndex } from "./pages/RestaurantIndex"
+import { SWRConfigYelp } from "./SWRCustomYelp"
 
 const App = () => {
   return(
-    <div>
-      <h1>Hello, World!</h1>
-    </div>
+    <SWRConfigYelp>
+      <RestaurantIndex />
+    </SWRConfigYelp>
   )
 }
 

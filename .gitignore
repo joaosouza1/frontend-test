@@ -2,3 +2,4 @@ node_modules
 dist
 .tool-versions
 storybook-static
+.env
