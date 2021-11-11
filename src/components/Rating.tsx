@@ -15,18 +15,17 @@ export const Rating: FC<RatingProps> = ({ value }) => {
   return (
     <Wrapper role="img" title={title}>
       {arrayOfFive.map((n, index) => {
-        let icon
-        if (index + 1 <= value) icon = <StarFill />
-        else if (index + 0.5 <= value) icon = <StarHalf />
-        else icon = <StarOutline />
-        return <span key={index} aria-hidden>{icon}</span>
+        let Icon
+        if (index + 1 <= value) Icon = StarFill
+        else if (index + 0.5 <= value) Icon = StarHalf
+        else Icon = StarOutline
+        return <Icon key={index} aria-hidden />
       })}
     </Wrapper>
   )
 }
 
-const Wrapper = styled.span`
-  & > span {
-    margin-right: 1px;
-  }
+const Wrapper = styled.div`
+  display: flex;
+  column-gap: 1px;
 `
