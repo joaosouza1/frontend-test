@@ -17,15 +17,16 @@ interface RestaurantCardProps {
 }
 
 export const RestaurantCardDesktop: FC<RestaurantCardProps> = (props) => {
-  const imageAlt = `Picture of ${props.name}`
   return (
     <div>
-      <Image src={props.imageURL} alt={imageAlt} />
+      <Image src={props.imageURL} alt="Thumbnail picture" />
       <Heading>{props.name}</Heading>
       <Rating value={props.rating} />
       <MetaWrapper>
         <MetaText>
-          {props.cuisine} • <Price dollarSigns={props.price} />
+          {props.cuisine}
+          <span aria-hidden> • </span>
+          <Price dollarSigns={props.price} />
         </MetaText>
         <OpenFlagDesktop open={props.open} />
       </MetaWrapper>

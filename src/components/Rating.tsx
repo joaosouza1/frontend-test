@@ -11,7 +11,7 @@ interface RatingProps {
 const arrayOfFive = [...Array(5)]
 
 export const Rating: FC<RatingProps> = ({ value }) => {
-  const title = `Rating: ${value}`
+  const title = `Rating ${value}`
   return (
     <Wrapper role="img" title={title}>
       {arrayOfFive.map((n, index) => {
