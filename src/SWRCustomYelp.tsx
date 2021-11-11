@@ -35,6 +35,11 @@ const yelpFetcher = (input: RequestInfo, init?: RequestInit) => (
 )
 
 // Persist the SWR cache to local storage.
+//
+// Possible improvements:
+// - Save periodically
+// - Replace with IndexedDB
+//
 // https://swr.vercel.app/docs/advanced/cache#localstorage-based-persistent-cache
 function localStorageProvider() {
   // When initializing, we restore the data from `localStorage` into a map.
@@ -50,11 +55,28 @@ function localStorageProvider() {
   return map
 }
 
+// 24-hour SWR dedupping interval.
+//
+// Yelp recommends caching API data for up to 24 hours to avoid hitting the usage limit.
+// This is a frontend app, so it doesn't really store Yelp data in a third-party server,
+// just in the client's local storage. But the 24 hour interval still reduces API hits.
+//
+// Note: the interval only works in the current window.
+// If the user refreshes the page or opens a new window, the interval is reset there.
+//
+// Possible improvements:
+// - Set up a 24-hour cache on the production proxy
+const yelpRecommendedDedupingInterval = 24 * 60 * 60 * 1000
+
 // SWRConfig that uses yelpFetcher by default.
 // https://swr.vercel.app/docs/global-configuration
 export const SWRConfigYelp: FC = (props) => {
   return (
-    <SWRConfig value={{ fetcher: yelpFetcher, provider: localStorageProvider }}>
+    <SWRConfig value={{
+      fetcher: yelpFetcher,
+      provider: localStorageProvider,
+      dedupingInterval: yelpRecommendedDedupingInterval
+    }}>
       {props.children}
     </SWRConfig>
   )
