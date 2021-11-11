@@ -13,7 +13,7 @@ export default {
           name: 'Common Card Size',
           styles: {
             width: '320px',
-            height: '412px',
+            height: '424px',
           },
         },
       },
