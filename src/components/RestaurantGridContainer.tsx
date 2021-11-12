@@ -12,6 +12,9 @@ export const RestaurantGridContainer: FC = () => {
     pages.push(<RestaurantGridPage key={i} index={i} />)
   }
 
+  // Pre-load the next page so clicking on Load More feels fast
+  const preLoadedNextPage = <RestaurantGridPage index={pageCount + 1} />
+
   // TODO: prevent loading more pages if the previous
   // request didn't yield any more results.
   const handleLoadMore = () => setPageCount(page => page + 1)
@@ -21,6 +24,9 @@ export const RestaurantGridContainer: FC = () => {
       <RestaurantGrid>
         {pages}
       </RestaurantGrid>
+      <Hidden>
+        {preLoadedNextPage}
+      </Hidden>
       <LoadMoreWrapper>
         <CTA onClick={handleLoadMore}>Load more</CTA>
       </LoadMoreWrapper>
@@ -40,4 +46,8 @@ const LoadMoreWrapper = styled.div`
   & > button {
     width: 100%;
   }
+`
+
+const Hidden = styled.div`
+  display: none;
 `
