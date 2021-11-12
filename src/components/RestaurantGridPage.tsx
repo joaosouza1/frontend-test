@@ -1,8 +1,8 @@
-import React, { FC } from "react";
-import useSWR from "swr";
-import { RestaurantCardDesktop } from "./RestaurantCardDesktop";
-import { YelpBusinessSearch } from "../types/yelp";
+import React, { FC, useCallback } from "react";
+import useSWR, { useSWRConfig } from "swr";
+import { YelpBusiness, YelpBusinessSearch } from "../types/yelp";
 import { MetaText } from "./MetaText";
+import { RestaurantCardDesktop } from "./RestaurantCardDesktop";
 
 interface RestaurantGridPageProps {
   index: number
@@ -19,17 +19,36 @@ export const RestaurantGridPage: FC<RestaurantGridPageProps> = (props) => {
   return (
     <>
       {data.businesses?.map(business => (
-        <RestaurantCardDesktop
-          key={business.id}
-          id={business.id}
-          name={business.name}
-          imageURL={business.image_url}
-          rating={business.rating}
-          cuisine={business.categories[0]?.title}
-          price={business.price}
-          open={!business.is_closed}
-        />
+        <RestaurantCardContainer key={business.id} business={business} />
       ))}
     </>
+  )
+}
+
+interface RestaurantCardDesktopContainerProps {
+  business: YelpBusiness
+}
+
+export const RestaurantCardContainer: FC<RestaurantCardDesktopContainerProps> = ({ business }) => {
+  const { mutate } = useSWRConfig()
+
+  // Pre-fill restaurant data so visiting the detail page feels fast
+  const preFillRestaurantDetail = useCallback(async () => {
+    await mutate(`/businesses/${business.id}`, business, false)
+    console.warn("MUTATED", business.name)
+  }, [business.id])
+
+  return (
+    <RestaurantCardDesktop
+      key={business.id}
+      id={business.id}
+      name={business.name}
+      imageURL={business.image_url}
+      rating={business.rating}
+      cuisine={business.categories[0]?.title}
+      price={business.price}
+      open={!business.is_closed}
+      onClick={preFillRestaurantDetail}
+    />
   )
 }

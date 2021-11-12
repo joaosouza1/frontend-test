@@ -14,6 +14,7 @@ interface RestaurantCardProps {
   cuisine: string
   price: string | undefined
   open: boolean
+  onClick?: () => any
 }
 
 export const RestaurantCardDesktop: FC<RestaurantCardProps> = (props) => {
@@ -32,7 +33,9 @@ export const RestaurantCardDesktop: FC<RestaurantCardProps> = (props) => {
           <OpenFlagDesktop open={props.open} />
         </MetaText>
       </MetaWrapper>
-      <CTALink primary to={props.id}>Learn more</CTALink>
+      <CTALink primary to={props.id} onClick={props.onClick}>
+        Learn more
+      </CTALink>
     </Wrapper>
   )
 }

@@ -143,3 +143,5 @@ yarn yelp-proxy
 I'll fetch Yelp API data with SWR: https://swr.vercel.app
 
 It's a very handy data fetching hook with a local cache that works with REST and GraphQL. It removes the need for Redux in most cases (or any other local store).
+
+One very nice feature of SWR is `mutate`. You can pre-fill an endpoint response with data you already have locally. In this app, it makes visiting a restaurant page feel immediate, since we can pre-fill some information from the index page.
