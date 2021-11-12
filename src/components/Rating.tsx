@@ -6,14 +6,15 @@ import styled from 'styled-components'
 
 interface RatingProps {
   value: number
+  className?: string
 }
 
 const arrayOfFive = [...Array(5)]
 
-export const Rating: FC<RatingProps> = ({ value }) => {
+export const Rating: FC<RatingProps> = ({ value, className }) => {
   const title = `Rating ${value}`
   return (
-    <Wrapper role="img" title={title}>
+    <Wrapper role="img" title={title} className={className}>
       {arrayOfFive.map((n, index) => {
         let Icon
         if (index + 1 <= value) Icon = StarFill
