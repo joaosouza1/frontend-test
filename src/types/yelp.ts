@@ -1,6 +1,13 @@
 // Reference: https://www.yelp.com/developers/documentation/v3/business_search
 
-export interface YelpBusinessSearch {
+export interface YelpError {
+  "error"?: {
+    "code": string,
+    "description": string
+  }
+}
+
+export interface YelpBusinessSearch extends YelpError {
   "total": number,
   "businesses": YelpBusiness[]
   "region": {

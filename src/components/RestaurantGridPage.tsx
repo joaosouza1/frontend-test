@@ -13,7 +13,7 @@ export const RestaurantGridPage: FC<RestaurantGridPageProps> = (props) => {
   const limit = 24
   const offset = limit * props.index
   const { data, error, isValidating } = useSWR<YelpBusinessSearch>(`/businesses/search?location=${location}&limit=${limit}&offset=${offset}`)
-  if (error) return <MetaText>Error</MetaText>
+  if (error || data?.error) return <MetaText>Error</MetaText>
   if (!data && isValidating) return <MetaText>Loading...</MetaText>
   if (!data) return null
   return (
