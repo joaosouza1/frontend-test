@@ -4,6 +4,7 @@ import useSWR from "swr";
 import { RestaurantCardDesktop } from "../components/RestaurantCardDesktop";
 import { YelpBusinessSearch } from "../types/yelp";
 import { CTA } from "./CTA";
+import { MetaText } from "./MetaText";
 import { RestaurantGridDesktop } from "./RestaurantGridDesktop";
 
 export const RestaurantGridDesktopContainer: FC = () => {
@@ -48,11 +49,13 @@ export const RestaurantCardPage: FC<RestaurantCardPageProps> = (props) => {
   const location = "Las+Vegas" // hardcoded as requested in the README
   const limit = 24
   const offset = limit * props.index
-  const { data } = useSWR<YelpBusinessSearch>(`/businesses/search?location=${location}&limit=${limit}&offset=${offset}`)
+  const { data, error, isValidating } = useSWR<YelpBusinessSearch>(`/businesses/search?location=${location}&limit=${limit}&offset=${offset}`)
+  if (error) return <MetaText>Error</MetaText>
+  if (!data && isValidating) return <MetaText>Loading...</MetaText>
   if (!data) return null
   return (
     <>
-      {data.businesses.map(business => (
+      {data.businesses?.map(business => (
         <RestaurantCardDesktop
           key={business.id}
           id={business.id}
