@@ -36,6 +36,7 @@ export const ReviewList: FC<RestaurantDetailPageReviewListProps> = (props) => {
 }
 
 const StyledSubheading = styled(Subheading)`
+  margin-top: 48px;
   margin-bottom: 48px;
 `
 

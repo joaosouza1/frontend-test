@@ -3,21 +3,27 @@ import styled from "styled-components";
 import { Divider } from "../components/Divider";
 import { Heading1 } from "../components/Heading1";
 import { Heading2 } from "../components/Heading2";
-import { Layout } from "../components/Layout";
+import { Layout, LayoutTop } from "../components/Layout";
 import { RestaurantGridContainer } from "../components/RestaurantGridContainer";
 import { Subheading } from "../components/Subheading";
 
 export const RestaurantIndexPage: FC = () => {
   return (
-    <Layout>
-      <HeroMini>
-        <StyledHeading1>Restaurants</StyledHeading1>
-        <StyledSubheading>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</StyledSubheading>
-      </HeroMini>
+    <div>
+      <Layout>
+        <LayoutTop>
+          <HeroMini>
+            <StyledHeading1>Restaurants</StyledHeading1>
+            <StyledSubheading>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</StyledSubheading>
+          </HeroMini>
+        </LayoutTop>
+      </Layout>
       <Divider />
-      <StyledHeading2>All Restaurants</StyledHeading2>
-      <RestaurantGridContainer />
-    </Layout>
+      <Layout>
+        <StyledHeading2>All Restaurants</StyledHeading2>
+        <RestaurantGridContainer />
+      </Layout>
+    </div>
   )
 }
 
