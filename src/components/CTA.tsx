@@ -1,10 +1,10 @@
-import styled, { css } from 'styled-components'
+import { css } from 'styled-components'
 
-interface CTAProps {
+export interface CTAProps {
   primary?: boolean
 }
 
-export const CTA = styled.button<CTAProps>`
+export const CTACSS = css<CTAProps>`
   border: 1px solid #002B56;
   border-radius: 2px;
 
@@ -17,6 +17,7 @@ export const CTA = styled.button<CTAProps>`
   text-align: center;
   letter-spacing: 1px;
   text-transform: uppercase;
+  text-decoration: none;
 
   cursor: pointer;
 

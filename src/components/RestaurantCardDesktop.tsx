@@ -1,6 +1,6 @@
 import React, { FC } from "react"
 import styled from 'styled-components'
-import { CTA } from "./CTA"
+import { CTALink } from "./CTALink"
 import { MetaText } from "./MetaText"
 import { OpenFlagDesktop } from "./OpenFlagDesktop"
 import { Price } from "./Price"
@@ -30,7 +30,7 @@ export const RestaurantCardDesktop: FC<RestaurantCardProps> = (props) => {
         </MetaText>
         <OpenFlagDesktop open={props.open} />
       </MetaWrapper>
-      <CardCTA primary>Learn more</CardCTA>
+      <CTALink primary to={props.id}>Learn more</CTALink>
     </Wrapper>
   )
 }
@@ -68,8 +68,4 @@ const MetaWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   flex: 1;
-`
-
-const CardCTA = styled(CTA)`
-  width: 100%
 `

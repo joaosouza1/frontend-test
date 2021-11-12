@@ -39,6 +39,7 @@ module.exports = {
     filename: "bundle.js"
   },
   devServer: {
+    historyApiFallback: true, // let React handle routes
     port: 3000
   },
   plugins: [

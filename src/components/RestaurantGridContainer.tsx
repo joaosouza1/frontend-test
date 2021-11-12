@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
 import styled from "styled-components";
-import { CTA } from "./CTA";
+import { CTAButton } from "./CTAButton";
 import { RestaurantGridPage } from "./RestaurantGridPage";
 import { RestaurantGrid } from "./RestaurantGrid";
 
@@ -28,7 +28,7 @@ export const RestaurantGridContainer: FC = () => {
         {preLoadedNextPage}
       </Hidden>
       <LoadMoreWrapper>
-        <CTA onClick={handleLoadMore}>Load more</CTA>
+        <CTAButton onClick={handleLoadMore}>Load more</CTAButton>
       </LoadMoreWrapper>
     </div>
   )

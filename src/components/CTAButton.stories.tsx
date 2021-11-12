@@ -1,14 +1,14 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import { CTA } from './CTA';
+import { CTAButton } from './CTAButton';
 
 export default {
-  title: 'Components/CTA',
-  component: CTA,
-} as ComponentMeta<typeof CTA>;
+  title: 'Components/CTAButton',
+  component: CTAButton,
+} as ComponentMeta<typeof CTAButton>;
 
-const Template: ComponentStory<typeof CTA> = (args) => <CTA {...args} />;
+const Template: ComponentStory<typeof CTAButton> = (args) => <CTAButton {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
