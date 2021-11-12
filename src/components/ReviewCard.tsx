@@ -18,7 +18,7 @@ export const ReviewCard: FC<ReviewCardProps> = (props) => {
         <AuthorImage src={props.authorImageURL} alt="Reviewer's picture" />
         <div>
           <AuthorName>{props.authorName}</AuthorName>
-          <DateWrapper>{props.date.toString()}</DateWrapper>
+          <DateWrapper>{props.date.toLocaleDateString("en-US")}</DateWrapper>
         </div>
       </AuthorWrapper>
       <div>
@@ -48,6 +48,7 @@ const AuthorImage = styled.img`
   margin-right: 18px;
   flex-shrink: 0;
   background: #D8D8D8;
+  object-fit: cover;
 
   @media (min-width: 1024px) {
     width: 80px;
