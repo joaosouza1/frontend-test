@@ -10,17 +10,17 @@ interface OpenFlagProps {
 export const OpenFlagDesktop: FC<OpenFlagProps> = ({ open }) => {
   const metaText = open ? "Open now" : "Closed"
   return (
-    <MetaText>
+    <span>
       <DotWrapper>
         <OpenFlagDot open={open} />
       </DotWrapper>
       {metaText}
-    </MetaText>
+    </span>
   )
 }
 
 const DotWrapper = styled.span`
-  margin-right: 4px;
-  vertical-align: -1px;
+  margin-right: 0.4em;
+  vertical-align: -0.1em;
   display: inline-block;
 `

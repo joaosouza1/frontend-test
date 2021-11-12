@@ -2,34 +2,46 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Price } from './Price';
+import { MetaText } from './MetaText';
+import { Subheading } from './Subheading';
 
 export default {
   title: 'Components/Price',
   component: Price,
 } as ComponentMeta<typeof Price>;
 
-const Template: ComponentStory<typeof Price> = (args) => <Price {...args} />;
+const MetaTextTemplate: ComponentStory<typeof Price> = (args) =>(
+  <MetaText>
+    <Price {...args} />
+  </MetaText>
+)
 
-export const _1 = Template.bind({});
-_1.storyName = "$"
-_1.args = {
+export const MetaTextCheap = MetaTextTemplate.bind({});
+MetaTextCheap.storyName = "Meta Text $"
+MetaTextCheap.args = {
   dollarSigns: '$',
 };
 
-export const _2 = Template.bind({});
-_2.storyName = "$$"
-_2.args = {
-  dollarSigns: '$$',
+export const MetaTextExpensive = MetaTextTemplate.bind({});
+MetaTextExpensive.storyName = "Meta Text $$$$"
+MetaTextExpensive.args = {
+  dollarSigns: '$$$$',
 };
 
-export const _3 = Template.bind({});
-_3.storyName = "$$$"
-_3.args = {
-  dollarSigns: '$$$',
+const SubheadingTemplate: ComponentStory<typeof Price> = (args) => (
+  <Subheading>
+    <Price {...args} />
+  </Subheading>
+)
+
+export const SubheadingCheap = SubheadingTemplate.bind({});
+SubheadingCheap.storyName = "Subheading $"
+SubheadingCheap.args = {
+  dollarSigns: '$',
 };
 
-export const _4 = Template.bind({});
-_4.storyName = "$$$$"
-_4.args = {
+export const SubheadingExpensive = SubheadingTemplate.bind({});
+SubheadingExpensive.storyName = "Subheading $$$$"
+SubheadingExpensive.args = {
   dollarSigns: '$$$$',
 };

@@ -28,7 +28,9 @@ export const RestaurantCardDesktop: FC<RestaurantCardProps> = (props) => {
           {props.price && <span aria-hidden> • </span>}
           {props.price && <Price dollarSigns={props.price} />}
         </MetaText>
-        <OpenFlagDesktop open={props.open} />
+        <MetaText>
+          <OpenFlagDesktop open={props.open} />
+        </MetaText>
       </MetaWrapper>
       <CTALink primary to={props.id}>Learn more</CTALink>
     </Wrapper>

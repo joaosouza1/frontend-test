@@ -6,8 +6,8 @@ interface OpenFlagDotProps {
 }
 
 const StyledOpenFlagDot = styled.div<OpenFlagDotProps>`
-  width: 8px;
-  height: 8px;
+  width: 0.8em;
+  height: 0.8em;
   background: #FF3548;
   border-radius: 50%;
 

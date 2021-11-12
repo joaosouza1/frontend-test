@@ -8,7 +8,7 @@ interface PriceProps {
 
 export const Price: FC<PriceProps> = ({ dollarSigns }) => {
   const ariaLabel = `Price: ${readablePrice(dollarSigns)}`
-  return <MetaText aria-label={ariaLabel}>{dollarSigns}</MetaText>
+  return <span aria-label={ariaLabel}>{dollarSigns}</span>
 }
 
 const readablePrice = (dollarSigns: string) => {
