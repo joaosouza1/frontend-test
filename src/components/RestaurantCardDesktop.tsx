@@ -44,6 +44,9 @@ const Image = styled.img`
   display: block;
   width: 100%;
   margin-bottom: 16px;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  background: #D8D8D8;
 `
 
 const Heading = styled.h1`
