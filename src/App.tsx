@@ -1,11 +1,11 @@
 import React from "react"
-import { RestaurantIndex } from "./pages/RestaurantIndex"
+import { RestaurantIndexPage } from "./pages/RestaurantIndexPage"
 import { SWRConfigYelp } from "./SWRCustomYelp"
 
 const App = () => {
   return(
     <SWRConfigYelp>
-      <RestaurantIndex />
+      <RestaurantIndexPage />
     </SWRConfigYelp>
   )
 }

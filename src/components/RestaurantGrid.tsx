@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const RestaurantGridDesktop = styled.div`
+export const RestaurantGrid = styled.div`
   display: grid;
   column-gap: 32px;
   row-gap: 80px;
