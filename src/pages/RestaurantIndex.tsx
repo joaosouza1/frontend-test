@@ -1,11 +1,10 @@
-import React from "react";
-import { FC } from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 import { Divider } from "../components/Divider";
 import { Heading1 } from "../components/Heading1";
 import { Heading2 } from "../components/Heading2";
 import { Layout } from "../components/Layout";
-import { RestaurantCardDesktop } from "../components/RestaurantCardDesktop";
+import { RestaurantCardsContainer } from "../components/RestaurantCardsContainer";
 import { RestaurantGridDesktop } from "../components/RestaurantGridDesktop";
 import { Subheading } from "../components/Subheading";
 
@@ -19,7 +18,7 @@ export const RestaurantIndex: FC = () => {
       <Divider />
       <StyledHeading2>All Restaurants</StyledHeading2>
       <RestaurantGridDesktop>
-        {/* TODO: restaurant cards */}
+        <RestaurantCardsContainer />
       </RestaurantGridDesktop>
     </Layout>
   )
