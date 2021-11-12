@@ -4,7 +4,7 @@ import { Divider } from "../components/Divider";
 import { Heading1 } from "../components/Heading1";
 import { Heading2 } from "../components/Heading2";
 import { Layout } from "../components/Layout";
-import { RestaurantCardsContainer } from "../components/RestaurantCardsContainer";
+import { RestaurantGridDesktopContainer } from "../components/RestaurantCardsContainer";
 import { RestaurantGridDesktop } from "../components/RestaurantGridDesktop";
 import { Subheading } from "../components/Subheading";
 
@@ -17,9 +17,7 @@ export const RestaurantIndex: FC = () => {
       </HeroMini>
       <Divider />
       <StyledHeading2>All Restaurants</StyledHeading2>
-      <RestaurantGridDesktop>
-        <RestaurantCardsContainer />
-      </RestaurantGridDesktop>
+      <RestaurantGridDesktopContainer />
     </Layout>
   )
 }

@@ -1,10 +1,55 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
+import styled from "styled-components";
 import useSWR from "swr";
 import { RestaurantCardDesktop } from "../components/RestaurantCardDesktop";
 import { YelpBusinessSearch } from "../types/yelp";
+import { CTA } from "./CTA";
+import { RestaurantGridDesktop } from "./RestaurantGridDesktop";
 
-export const RestaurantCardsContainer: FC = () => {
-  const { data } = useSWR<YelpBusinessSearch>('/businesses/search?location=Las+Vegas')
+export const RestaurantGridDesktopContainer: FC = () => {
+  const [pageCount, setPageCount] = useState<number>(1)
+  let pages = []
+  for (let i = 0; i < pageCount; i++) {
+    pages.push(<RestaurantCardPage index={i} />)
+  }
+  const handleLoadMore = () => setPageCount(page => page + 1)
+  return (
+    <div>
+      <RestaurantGridDesktop>
+        {pages}
+      </RestaurantGridDesktop>
+      <LoadMoreWrapper>
+        <CTA onClick={handleLoadMore}>Load more</CTA>
+      </LoadMoreWrapper>
+    </div>
+  )
+}
+
+const LoadMoreWrapper = styled.div`
+  margin: 48px auto;
+  max-width: 212px;
+
+  @media (min-width: 1024px) {
+    margin-top: 80px;
+    max-width: 416px;
+  }
+
+  & > button {
+    width: 100%;
+  }
+`
+
+
+interface RestaurantCardPageProps {
+  index: number
+}
+
+export const RestaurantCardPage: FC<RestaurantCardPageProps> = (props) => {
+  const location = "Las+Vegas" // hardcoded as requested in the README
+  const limit = 24
+  const offset = limit * props.index
+  const { data } = useSWR<YelpBusinessSearch>(`/businesses/search?location=${location}&limit=${limit}&offset=${offset}`)
+  if (!data) return null
   return (
     <>
       {data.businesses.map(business => (
