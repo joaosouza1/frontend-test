@@ -13,7 +13,7 @@ export interface YelpBusinessSearch {
 
 export interface YelpBusiness {
   "rating": number,
-  "price": "$" | "$$" | "$$$" | "$$$$",
+  "price"?: "$" | "$$" | "$$$" | "$$$$",
   "phone": string,
   "id": string,
   "alias": string,

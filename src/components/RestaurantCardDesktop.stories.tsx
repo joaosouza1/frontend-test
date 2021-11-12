@@ -45,3 +45,14 @@ ShortName.args = {
   price: "$",
   open: false,
 };
+
+export const PriceUnknown = Template.bind({});
+PriceUnknown.args = {
+  id: "456",
+  name: "Price unknown",
+  imageURL: "https://s3-media2.fl.yelpcdn.com/bphoto/CPc91bGzKBe95aM5edjhhQ/o.jpg",
+  rating: 1.5,
+  cuisine: "American (new)",
+  price: undefined,
+  open: false,
+};

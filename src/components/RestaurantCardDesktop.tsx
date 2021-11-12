@@ -12,7 +12,7 @@ interface RestaurantCardProps {
   imageURL: string
   rating: number
   cuisine: string
-  price: string
+  price: string | undefined
   open: boolean
 }
 
@@ -25,8 +25,8 @@ export const RestaurantCardDesktop: FC<RestaurantCardProps> = (props) => {
       <MetaWrapper>
         <MetaText>
           {props.cuisine}
-          <span aria-hidden> • </span>
-          <Price dollarSigns={props.price} />
+          {props.price && <span aria-hidden> • </span>}
+          {props.price && <Price dollarSigns={props.price} />}
         </MetaText>
         <OpenFlagDesktop open={props.open} />
       </MetaWrapper>
