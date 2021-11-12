@@ -7,14 +7,17 @@ import { OpenFlagDesktop } from "../components/OpenFlagDesktop";
 import { Price } from "../components/Price";
 import { Rating } from "../components/Rating";
 import { Subheading } from "../components/Subheading";
-import { YelpBusiness } from "../types/yelp";
+import { YelpBusinessDetail } from "../types/yelp";
+import { MetaText } from "./MetaText";
 
 interface RestaurantDetailPageHeaderProps {
   id: string
 }
 
 export const RestaurantDetailPageHeader: FC<RestaurantDetailPageHeaderProps> = (props) => {
-  const { data } = useSWR<YelpBusiness>(`/businesses/${props.id}`)
+  const { data, error, isValidating } = useSWR<YelpBusinessDetail>(`/businesses/${props.id}`)
+  if (!data && isValidating) return <MetaText>Loading...</MetaText>
+  if (error || !data || data?.error) return <MetaText>Error</MetaText>
 
   return (
     <Layout>

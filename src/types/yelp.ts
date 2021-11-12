@@ -18,6 +18,8 @@ export interface YelpBusinessSearch extends YelpError {
   }
 }
 
+export type YelpBusinessDetail = YelpBusiness & YelpError
+
 export interface YelpBusiness {
   "rating": number,
   "price"?: "$" | "$$" | "$$$" | "$$$$",
