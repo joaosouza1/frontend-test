@@ -31,6 +31,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-refresh": "^0.10.0",
+    "regenerator-runtime": "^0.13.9",
     "style-loader": "^3.3.1",
     "styled-components": "^5.3.3",
     "swr": "^1.0.1",
@@ -51,6 +52,9 @@
     "yelp-proxy": "lcp --proxyUrl https://api.yelp.com/v3"
   },
   "jest": {
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/testSetup.ts"
+    ],
     "moduleNameMapper": {
       "\\.svg": "<rootDir>/__mocks__/svg.js"
     }
