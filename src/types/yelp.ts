@@ -51,3 +51,23 @@ export interface YelpBusiness {
   "distance": number,
   "transactions": "pickup" | "delivery" | "restaurant_reservation"
 }
+
+export interface YelpReviewsResponse extends YelpError {
+  "reviews": YelpReview[]
+  "total": number
+  "possible_languages": string[]
+}
+
+export interface YelpReview {
+  "id": string
+  "rating": number
+  "user": {
+    "id": string
+    "profile_url": string
+    "image_url": string
+    "name": string
+  }
+  "text": string
+  "time_created": string
+  "url": string
+}
