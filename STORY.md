@@ -117,6 +117,8 @@ https://www.npmtrends.com/react-rater-vs-react-rating-vs-react-rating-stars-comp
 
 So I implemented my own basic, read-only Rating component. I used the `@svgr/webpack` loader to allow SVG files to be imported as React components. I updated the settings to make it work in Webpack Dev Server and in Storybook, but unfortunately it still doesn't work in Jest. Because of that, I'll leave the Rating component untested until I find a solution.
 
+*UPDATE: SVG in Jest works! I had inadvertently put `/__mocks__/svgrMock.js` inside `/.storybook` instead of the root folder.*
+
 #### Other components
 
 For the remaining components, I'm not adding Storybook files and tests anymore. I'm sad to not deliver a perfect codebase but this is a decision to speed up development, since my time for this test is limited.
