@@ -2,6 +2,7 @@ import { css } from 'styled-components'
 
 export interface CTAProps {
   primary?: boolean
+  small?: boolean
 }
 
 export const CTACSS = css<CTAProps>`
@@ -24,6 +25,10 @@ export const CTACSS = css<CTAProps>`
   transition-property: background-color;
   transition-duration: 100ms;
 
+  &:disabled {
+    cursor: not-allowed;
+  }
+
   ${props => props.primary && css`
     background: #002B56;
     color: #FFFFFF;
@@ -31,6 +36,12 @@ export const CTACSS = css<CTAProps>`
     &:hover {
       background: #0066cc;
       border-color: #0066cc;
+    }
+
+    &:disabled {
+      color: #ffffff;
+      background: C8C8C8;
+      border-color: C8C8C8;
     }
   `}
 
@@ -42,5 +53,17 @@ export const CTACSS = css<CTAProps>`
       color: #0066cc;
       border-color: #0066cc;
     }
+
+    &:disabled {
+      color: #C8C8C8;
+      border-color: #E6E6E6;
+    }
+  `}
+
+  ${props => props.small && css`
+    font-size: 12px;
+    letter-spacing: 0.857143px;
+    border-radius: 0;
+    padding: 11px 16px;
   `}
 `
