@@ -1,3 +1,81 @@
+# Solution
+
+Thank you for reviewing my solution! To run the app:
+
+```
+yarn install
+yarn start
+```
+
+The `start` command will spin up:
+
+- The development server
+- The Yelp proxy
+- Storybook
+- Tests: 3 out of 18 will fail, didn't have time to fix them, sorry =(
+
+You can open the app at `http://localhost:3000`. Storybook will open automatically on a new window.
+
+You can also run individual commands, see `package.json`.
+
+## Highlights
+
+- I set up Webpack with Babel, TypeScript, SVG and CSS loaders. Babel will transpile JSX/TSX and modern JavaScript features, like arrow functions and async/await. In development, Babel will also use the React Refresh plugin so the app live-reloads.
+
+- I used the [`swr`](http://swr.vercel.app) library for data fetching.
+
+- For tests, I used Jest and React Testing Library. I added just a few tests as demonstation, since I'm not super familiar with these libraries and because my time is limited. For a highlight, check `RestaurantGridContainer.test.tsx`.
+
+- To develop presentational components, I used the CDD approach (Component Driven Development) with Storybook.
+
+- I followed the pages/containers/presentational approach wherever possible. Pages are the top-level components for each URL. Containers are components that perform data fetching and business logic. Presentational are components that simply take in props and render the markup for them.
+
+- I added a few accessibility features like aria labels, but the app isn't keyboard-usable (especially filters), so it could be better.
+
+- I implemented the detail page too, just click on "Learn more" under a restaurant card. It pre-fills the top of the page with data from the index page. It's also possible to visit the URL directly.
+
+- There is one decision I intentionally did differently from the requirement. You asked to perform real time filtering on both client side data, as well as server side queries. I implemented a middle ground solution. I store the SWR cache for each request in the browser's local storage, so the endpoints the user has already visited will yield results even if the Yelp API is down. I did it like this for two reasons:
+
+   1. It's easier to implement than Redux. Redux requires a store, reducers, selectors, etc. SWR is just a one-line hook.
+
+   2. It's better user experience imho. When the user performs a query, it's better to display a loading UI or delay the UI update a little (React Suspense) than to flash a page with local results and replace it with API data half a second later. I didn't add Suspense, but it wouldn't be too hard to add it in this app.
+
+- Read `STORY.md` for more detailed insights.
+
+## Possible improvements
+
+I wanted to deliver a perfect solution, but time wasn't on my side this week. There are many possible improvements for this app:
+
+- Set up a 24-hour cache on the production proxy for Yelp API data
+
+- Save SWR local cache periodically and replace local storage with IndexedDB for async writes and more storage
+
+- Better loading and error UI
+
+- Make the components more exactly match the mockup. It's close, but not yet perfect.
+
+- Serve the HelveticaNeue Light font, since not all clients have it (copyright issues?)
+
+- CSS theming with Styled Components to avoid repetition of colors, media queries etc
+
+- Implement the mobile version (I made it minimally usable on mobile, but not according to design)
+
+- Display restaurant alias instead of ID in the URL (but the Yelp API only accepts IDs on the detail endpoint, so I don't know how I'd do that)
+
+- More tests and Storybook. I added a few for demonstration purposes, but then I didn’t add any more, I had to focus my limited time on the implementation.
+
+- Split the Webpack config for development and production
+
+- ESLint: lint, auto-format code, auto-sort imports
+
+- Upon clicking on "Clear all", display just one page, clear the rest, to save on API hits.
+
+- Hide the Load More button when there are no results.
+
+- And probably more!
+
+I'm looking forward to see your questions and comments =)
+
 # Superformula Front-end Developer Coding Test
 
 Be sure to read **all** of this document carefully, and follow the guidelines within.
