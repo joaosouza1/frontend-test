@@ -50,4 +50,6 @@ const FormMenuContent = styled.div`
   font-size: 16px;
   letter-spacing: 0.5px;
   color: #606060;
+  max-height: 330px;
+  overflow-y: auto;
 `

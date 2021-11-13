@@ -12,15 +12,15 @@ interface RestaurantGridPageProps {
 
 export const RestaurantGridPage: FC<RestaurantGridPageProps> = (props) => {
   const { formValues } = useContext(FilterContext)
-  const open = formValues.open || undefined
+  const open_now = formValues.open || undefined
   const price = formValues.price === "0" ? undefined : formValues.price
-  const category = formValues.category === "" ? undefined : formValues.category
+  const categories = formValues.category === "" ? undefined : formValues.category
   const location = "Las+Vegas" // hardcoded as requested in the README
   const limit = 24
   const offset = limit * props.index
   const url = stringifyUrl({
     url: "/businesses/search",
-    query: { location, limit, offset, price, open, category }
+    query: { location, limit, offset, price, open: open_now, categories }
   })
   const { data, error, isValidating } = useSWR<YelpBusinessSearch>(url)
   if (error || data?.error) return <MetaText>Error</MetaText>

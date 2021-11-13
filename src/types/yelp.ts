@@ -73,3 +73,16 @@ export interface YelpReview {
   "time_created": string
   "url": string
 }
+
+// https://www.yelp.com/developers/documentation/v3/all_categories
+export interface YelpCategoriesResponse extends YelpError {
+  "categories": YelpCategory[]
+}
+
+export interface YelpCategory {
+  "alias": string,
+  "title": string,
+  "parent_aliases": string[],
+  "country_whitelist": string[],
+  "country_blacklist": string[]
+}

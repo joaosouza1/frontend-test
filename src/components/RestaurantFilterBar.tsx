@@ -1,7 +1,9 @@
 import React, { FC, useContext } from "react";
 import styled from "styled-components";
+import useSWR from "swr";
 import { CTAButton } from "../components/CTAButton";
 import { FilterContext } from "../contexts/FilterContextContainer";
+import { YelpCategoriesResponse } from "../types/yelp";
 import { CheckboxO } from "./Checkbox";
 import { FormLabel } from "./FormLabel";
 import { RadioMenuFilter } from "./RadioMenuFilter";
@@ -68,13 +70,7 @@ export const RestaurantFilterBar: FC = () => {
           onChange={handlePriceChange}
         />
 
-        <RadioMenuFilter
-          label="Categories"
-          inputName="category"
-          options={categoryOptions}
-          currentValue={formValues.category}
-          onChange={handleCategoryChange}
-        />
+        <CategoryMenuContainer />
 
       </OptionsWrapper>
 
@@ -102,3 +98,25 @@ const OptionsWrapper = styled.form`
 `
 
 const ClearAll = styled(CTAButton)`width: 151px;`
+
+const CategoryMenuContainer: FC = () => {
+  const { formValues, handleCategoryChange } = useContext(FilterContext)
+
+  const { data } = useSWR<YelpCategoriesResponse>('/categories')
+  if (!data) return null
+
+  const categoryOptions: FormOptions = data.categories.map(category => ({
+    value: category.alias,
+    label: category.title,
+  }))
+
+  return (
+    <RadioMenuFilter
+      label="Categories"
+      inputName="category"
+      options={categoryOptions}
+      currentValue={formValues.category}
+      onChange={handleCategoryChange}
+    />
+  )
+}
