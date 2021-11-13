@@ -7,6 +7,7 @@ import { Layout, LayoutTop } from "../components/Layout";
 import { RestaurantFilterBar } from "../components/RestaurantFilterBar";
 import { RestaurantGridContainer } from "../components/RestaurantGridContainer";
 import { Subheading } from "../components/Subheading";
+import { FilterContextContainer } from "../contexts/FilterContextContainer";
 
 export const RestaurantIndexPage: FC = () => {
   return (
@@ -20,14 +21,16 @@ export const RestaurantIndexPage: FC = () => {
         </LayoutTop>
       </Layout>
       <Divider />
-      <Layout>
-        <RestaurantFilterBar />
-      </Layout>
-      <Divider />
-      <Layout>
-        <StyledHeading2>All Restaurants</StyledHeading2>
-        <RestaurantGridContainer />
-      </Layout>
+      <FilterContextContainer>
+        <Layout>
+          <RestaurantFilterBar />
+        </Layout>
+        <Divider />
+        <Layout>
+          <StyledHeading2>All Restaurants</StyledHeading2>
+          <RestaurantGridContainer />
+        </Layout>
+      </FilterContextContainer>
     </div>
   )
 }
@@ -36,4 +39,3 @@ const HeroMini = styled.div`max-width: 752px;`
 const StyledHeading1 = styled(Heading1)`margin-bottom: 24px;`
 const StyledHeading2 = styled(Heading2)`margin-bottom: 43px; margin-top: 64px;`
 const StyledSubheading = styled(Subheading)`margin-bottom: 36px;`
-

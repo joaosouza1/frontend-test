@@ -1,10 +1,10 @@
-import React, { FC, useCallback, useState } from "react";
+import React, { FC, useContext } from "react";
 import styled from "styled-components";
 import { CTAButton } from "../components/CTAButton";
+import { FilterContext } from "../contexts/FilterContextContainer";
 import { CheckboxO } from "./Checkbox";
 import { FormLabel } from "./FormLabel";
 import { RadioMenuFilter } from "./RadioMenuFilter";
-import { isEqual } from 'lodash'
 
 export interface FormValues {
   open: boolean
@@ -17,8 +17,6 @@ export interface FormOption {
 }
 
 export type FormOptions = FormOption[]
-
-const initialValues: FormValues = { open: false, price: '0', category: '' }
 
 const priceOptions: FormOptions = [
   { value: '0', label: 'All' },
@@ -35,25 +33,14 @@ const categoryOptions: FormOptions = [
 ]
 
 export const RestaurantFilterBar: FC = () => {
-  const [formValues, setFormValues] = useState<FormValues>(initialValues)
-
-  const handleOpenChange = useCallback((event) => {
-    setFormValues(formValues => ({ ...formValues, open: event.target.checked }))
-  }, [])
-
-  const handlePriceChange = useCallback((price) => {
-    setFormValues(formValues => ({ ...formValues, price }))
-  }, [])
-
-  const handleCategoryChange = useCallback((category) => {
-    setFormValues(formValues => ({ ...formValues, category }))
-  }, [])
-
-  const handleClearAll = useCallback(() => {
-    setFormValues(initialValues)
-  }, [])
-
-  const isClear = isEqual(formValues, initialValues)
+  const {
+    formValues,
+    isClear,
+    handleOpenChange,
+    handlePriceChange,
+    handleCategoryChange,
+    handleClearAll,
+  } = useContext(FilterContext)
 
   return (
     <FilterWrapper>
@@ -66,7 +53,7 @@ export const RestaurantFilterBar: FC = () => {
               type="checkbox"
               name="open-now"
               checked={formValues.open}
-              onChange={handleOpenChange}
+              onChange={event => handleOpenChange(event.target.checked)}
             />
           }>
             Open now
