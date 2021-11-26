@@ -1,21 +1,40 @@
-import React, { FC, ReactNode, useCallback, useRef, useState } from "react";
+import React, { FC, ReactNode, useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import useOnClickOutside from 'use-onclickoutside';
+import useOnChildrenBlur from "../hooks/useOnChildrenBlur";
 import { FormLabel } from "./FormLabel";
 
 interface FormMenuProps {
   label: ReactNode
 }
 
+const menuKeyCodes: Record<string, boolean> = {
+  Enter: true,
+  Space: true,
+}
+
 export const FormMenu: FC<FormMenuProps> = (props) => {
   const [open, setOpen] = useState<boolean>(false)
   const close = useCallback(() => setOpen(false), [])
   const toggle = useCallback(() => setOpen(open => !open), [])
-  const ref = useRef()
+  const ref = useRef<HTMLDivElement>(null)
   useOnClickOutside(ref, close)
+  const [handleBlur, handleFocus] = useOnChildrenBlur(close)
+  const handleKeyPress = useCallback<React.KeyboardEventHandler<HTMLDivElement>>((event) => {
+    if (!menuKeyCodes[event.code]) return
+    event.preventDefault()
+    toggle()
+  }, [toggle])
+
   return (
-    <div ref={ref}>
-      <FormMenuLabel onClick={toggle}>
+    <div ref={ref} onBlur={handleBlur} onFocus={handleFocus}>
+      <FormMenuLabel
+        onClick={toggle}
+        onKeyPress={handleKeyPress}
+        tabIndex={0}
+        role="button"
+        aria-expanded={open}
+      >
         {props.label}
       </FormMenuLabel>
       {open &&

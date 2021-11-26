@@ -34,6 +34,10 @@ const Label = styled.label`
     width: 0;
     height: 0;
     opacity: 0;
+
+    &:focus ~ span {
+      outline: 2px solid #002B56;
+    }
   }
 
   & > span {
