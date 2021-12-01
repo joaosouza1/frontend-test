@@ -1,20 +1,23 @@
 {
   "presets": [
-    "@babel/env",
-    "@babel/preset-react"
+    // Transpile modern JS
+    "@babel/preset-env",
+    // Transpile JSX
+    "@babel/preset-react",
+    // Transpile TypeScript -- gotcha: doesn't perform type check (see webpack.config.js)
+    "@babel/preset-typescript"
   ],
   "plugins": [
-    "babel-plugin-styled-components"
+    // Transpile Styled Components
+    "babel-plugin-styled-components",
+    // Transpile async/await
+    ["@babel/plugin-transform-runtime", { "regenerator": true }]
   ],
   "env": {
     "development": {
       "plugins": [
+        // Enable hot refresh for React (see webpack.config.js)
         "react-refresh/babel"
-      ]
-    },
-    "test": {
-      "presets": [
-        "@babel/preset-typescript"
       ]
     }
   }
