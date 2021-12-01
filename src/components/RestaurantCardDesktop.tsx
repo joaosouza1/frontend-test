@@ -1,6 +1,7 @@
 import React, { FC } from "react"
+import { Link } from "react-router-dom"
 import styled from 'styled-components'
-import { CTALink } from "./CTALink"
+import { CTADiv } from "./CTADiv"
 import { MetaText } from "./MetaText"
 import { OpenFlagDesktop } from "./OpenFlagDesktop"
 import { Price } from "./Price"
@@ -33,9 +34,11 @@ export const RestaurantCardDesktop: FC<RestaurantCardProps> = (props) => {
           <OpenFlagDesktop open={props.open} />
         </MetaText>
       </MetaWrapper>
-      <CTALink primary to={props.id} onClick={props.onClick}>
-        Learn more
-      </CTALink>
+      <Link to={props.id} onClick={props.onClick}>
+        <CTADiv primary>
+          Learn more
+        </CTADiv>
+      </Link>
     </Wrapper>
   )
 }
