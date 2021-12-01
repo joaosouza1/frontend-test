@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { RestaurantCardDesktop } from './RestaurantCardDesktop';
+import { MemoryRouter } from 'react-router-dom';
 
 export default {
   title: 'Components/RestaurantCardDesktop',
@@ -22,7 +23,11 @@ export default {
   }
 } as ComponentMeta<typeof RestaurantCardDesktop>;
 
-const Template: ComponentStory<typeof RestaurantCardDesktop> = (args) => <RestaurantCardDesktop {...args} />;
+const Template: ComponentStory<typeof RestaurantCardDesktop> = (args) => (
+  <MemoryRouter>
+    <RestaurantCardDesktop {...args} />
+  </MemoryRouter>
+);
 
 export const LongName = Template.bind({});
 LongName.args = {
