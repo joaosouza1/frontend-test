@@ -1,6 +1,18 @@
 # Solution
 
-Thank you for reviewing my solution! To run the app:
+Thank you for reviewing my solution! To run the app, first create a `.env` file containing your Yelp API key:
+
+```
+// Yelp's API does not allow CORS. To get around this, you will need to setup
+// a local proxy with CORS support and proxy your requets to Yelp's endpoints.
+//
+// Run: yarn yelp-proxy
+
+YELP_API_URL=http://localhost:8010/proxy
+YELP_API_KEY=your_key
+```
+
+Then start the application:
 
 ```
 yarn install
@@ -12,11 +24,29 @@ The `start` command will spin up:
 - The development server
 - The Yelp proxy
 - Storybook
-- Tests: 3 out of 18 will fail, didn't have time to fix them, sorry =(
+- Tests
 
 You can open the app at `http://localhost:3000`. Storybook will open automatically on a new window.
 
 You can also run individual commands, see `package.json`.
+
+## Production
+
+To build and run the production bundle locally:
+
+```bash
+yarn build
+yarn yelp-proxy
+yarn serve # in a new tab
+```
+
+## Deployment
+
+To deploy the application, these steps would be necessary:
+
+- Set up a production Yelp proxy.
+- Include in .env the production YELP_API_KEY and YELP_API_URL (production proxy URL).
+- Build the application and upload the contents of the `dist` folder to a static file server.
 
 ## Highlights
 

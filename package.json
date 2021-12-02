@@ -30,6 +30,8 @@
     "css-loader": "^6.5.1",
     "dotenv-webpack": "^7.0.3",
     "fork-ts-checker-webpack-plugin": "^6.5.0",
+    "html-webpack-harddisk-plugin": "^2.0.0",
+    "html-webpack-plugin": "^5.5.0",
     "jest": "^27.3.1",
     "local-cors-proxy": "^1.1.0",
     "lodash": "^4.17.21",
@@ -39,6 +41,7 @@
     "react-dom": "^17.0.2",
     "react-refresh": "^0.10.0",
     "react-router-dom": "^6.0.2",
+    "serve": "^13.0.2",
     "style-loader": "^3.3.1",
     "styled-components": "^5.3.3",
     "swr": "^1.0.1",
@@ -48,13 +51,16 @@
     "use-onclickoutside": "^0.4.0",
     "webpack": "^5.62.1",
     "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.4.0"
+    "webpack-dev-server": "^4.4.0",
+    "webpack-merge": "^5.8.0"
   },
   "scripts": {
     "start": "npm-run-all --parallel dev yelp-proxy storybook test-watch",
-    "dev": "webpack-dev-server --open",
+    "dev": "webpack-dev-server --open --config webpack.dev.js",
     "test": "jest",
     "test-watch": "jest --watch",
+    "build": "NODE_ENV=production webpack --config webpack.prod.js",
+    "serve": "serve --single dist",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "yelp-proxy": "lcp --proxyUrl https://api.yelp.com/v3"

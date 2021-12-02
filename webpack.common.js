@@ -1,12 +1,10 @@
 const path = require("path");
-const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const Dotenv = require("dotenv-webpack")
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
 
 module.exports = {
   entry: "./src/index.tsx",
-  mode: "development",
-  devtool: "eval-source-map",
   module: {
     rules: [
       {
@@ -33,20 +31,18 @@ module.exports = {
   // Output the bundle as ./dist/bundle.js
   output: {
     path: path.resolve(__dirname, "dist/"),
-    publicPath: "/dist/",
     filename: "bundle.js"
   },
-  devServer: {
-    // Let React handle routes
-    historyApiFallback: true,
-    port: 3000
-  },
   plugins: [
-    // Enable hot refresh for React (see .babelrc)
-    new ReactRefreshWebpackPlugin(),
     // Load environment variables from a .env file at the root folder
     new Dotenv(),
-    // Perform TypeScript type check on a separate thread
-    new ForkTsCheckerWebpackPlugin(),
+    // Bundle the HTML file and inject JS and CSS tags in it
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
+      // Write index.html to the output folder so WebpackDevServer can serve it
+      alwaysWriteToDisk: true
+    }),
+    // Enable the `alwaysWriteToDisk` for HtmlWebpackPlugin
+    new HtmlWebpackHarddiskPlugin()
   ]
 };
