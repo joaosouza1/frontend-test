@@ -19,9 +19,8 @@ export const ReviewList: FC<RestaurantDetailPageReviewListProps> = (props) => {
     <Layout>
       <StyledSubheading>{data.total} Reviews</StyledSubheading>
       {data.reviews.map(review => (
-        <div>
+        <div key={review.id}>
           <ReviewCard
-            key={review.id}
             authorImageURL={review.user.image_url}
             authorName={review.user.name}
             date={new Date(review.time_created)}
